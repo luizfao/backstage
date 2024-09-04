@@ -43,15 +43,14 @@ spec:
 
     - id: publish
       name: Publish
-      action: publish:github
+      action: publish:gitlab
       input:
-        allowedHosts: ['github.com']
+        sourcePath: ./source
+        description: ${{parameters.description}}
+        repoUrl: gitlab-gitlab.apps.cluster-sg6ws.sg6ws.sandbox1399.opentlc.com?owner=${{parameters.gitlabGroup}}&repo=${{parameters.componentName}}
         defaultBranch: main
-        description: This is ${{ parameters.componentName }}
-        repoUrl: github.com?owner=${{ steps.environment.output.githubOrgId }}&repo=${{ parameters.componentName }}
-        repoVisibility: public
         protectDefaultBranch: false
-        oidcCustomization: ${{ steps.environment.output.githubOIDCCustomization }}
+        repoVisibility: public
 
     - id: humanitec-create-app
       name: Create Humanitec App
