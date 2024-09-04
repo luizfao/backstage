@@ -55,13 +55,12 @@ spec:
           name: ${{ parameters.componentName }}
           image: ${{ parameters.componentName }}
           orgId: ${{ steps.environment.output.orgId }}
-          cloudProvider: ${{ steps.environment.output.cloudProvider }}
 
     - id: publish
       name: Publish
       action: publish:gitlab
       input:
-        sourcePath: ./source
+        sourcePath: ./content
         description: ${{parameters.description}}
         repoUrl: gitlab-gitlab.apps.cluster-sg6ws.sg6ws.sandbox1399.opentlc.com?owner=${{parameters.gitlabGroup}}&repo=${{parameters.componentName}}
         defaultBranch: main
