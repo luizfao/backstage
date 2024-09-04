@@ -60,7 +60,7 @@ spec:
       name: Publish
       action: publish:gitlab
       input:
-        sourcePath: ./content
+        sourcePath: ./
         description: ${{parameters.description}}
         repoUrl: gitlab-gitlab.apps.cluster-sg6ws.sg6ws.sandbox1399.opentlc.com?owner=${{parameters.gitlabGroup}}&repo=${{parameters.componentName}}
         defaultBranch: main
