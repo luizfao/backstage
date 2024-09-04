@@ -24,6 +24,22 @@ spec:
           ui:options:
             rows: 5
           ui:field: ValidateHumanitecAppID
+    - title: Provide information about the GitLab location
+      required:
+        - gitlabGroup
+      properties:
+        gitlabGroup:
+          title: Repo Owner
+          type: string
+          description: GitLab Organization
+          default: development
+          enum:
+            - development
+        description:
+          title: Description
+          type: string
+          description: Help others understand what this component is for
+          default: Pod info service
 
   steps:
     - name: Read Environment
@@ -47,7 +63,7 @@ spec:
       input:
         sourcePath: ./source
         description: ${{parameters.description}}
-        repoUrl: gitlab-gitlab.apps.cluster-sg6ws.sg6ws.sandbox1399.opentlc.com?owner=development&repo=${{parameters.componentName}}
+        repoUrl: gitlab-gitlab.apps.cluster-sg6ws.sg6ws.sandbox1399.opentlc.com?owner=${{parameters.gitlabGroup}}&repo=${{parameters.componentName}}
         defaultBranch: main
         protectDefaultBranch: false
         repoVisibility: public
