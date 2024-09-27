@@ -28,8 +28,8 @@ env:
   GCP_GAR_NAME: ${{ vars.GCP_GAR_NAME }}
 {% endraw %}
 {%- else -%}
-{% raw %}
   # Not on a cloud or unknown cloud provider ${{ values.cloudProvider }}
+{% raw %}
   CONTAINER_REGISTRY: ${{ vars.CONTAINER_REGISTRY }}
 {% endraw %}
 {% endif %}
