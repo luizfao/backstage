@@ -30,7 +30,10 @@ env:
   GCP_GAR_NAME: ${{ vars.GCP_GAR_NAME }}
 {% endraw %}
 {%- else -%}
-# Unknown cloud provider: ${{ values.cloudProvider }}
+{% raw %}
+  # Not on a cloud or unknown cloud provider ${{ values.cloudProvider }}
+  CONTAINER_REGISTRY: ${{ vars.CONTAINER_REGISTRY }}
+{% endraw %}
 {% endif %}
   HUMCTL_VERSION: '*'
   APP_NAME: ${{ values.name }}
@@ -100,6 +103,11 @@ jobs:
         run: |
           gcloud auth configure-docker ${{ env.GCP_GAR_HOST }} --quiet
           echo "CONTAINER_REGISTRY=${{ env.GCP_GAR_NAME }}" >> "$GITHUB_ENV"
+{% endraw %}
+{%- else -%}
+{% raw %}
+      - name: login to image registry
+        run: docker login $CONTAINER_REGISTRY -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PWD }}
 {% endraw %}
 {% endif %}
 {% raw %}
