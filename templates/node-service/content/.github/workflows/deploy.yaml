@@ -37,6 +37,7 @@ env:
 {% endif %}
   HUMCTL_VERSION: '*'
   APP_NAME: ${{ values.name }}
+  APP_ENV: ocp-luiz
 
 {% raw %}
 jobs:
@@ -128,6 +129,17 @@ jobs:
             --version $TAG \
             --ref $GITHUB_REF \
             --commit $GITHUB_SHA
+
+      - name: Setup Orchestrator app environment
+        continue-on-error: true
+        run: |
+          humctl create env ${{ env.APP_ENV }} \
+            --token ${{ secrets.HUMANITEC_TOKEN }} \
+            --org ${{ vars.HUMANITEC_ORG_ID }} \
+            --type development \
+            --name ${{ env.APP_ENV }} \
+            --from development \
+            --app ${{ env.APP_NAME }}
 
       - name: Deploy using Score
         run: |
