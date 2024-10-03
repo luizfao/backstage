@@ -3,9 +3,28 @@ kind: Component
 metadata:
   name: ${{ values.name | dump }}
   annotations:
-    "humanitec.com/orgId": ${{ values.orgId | dump }}
-    "humanitec.com/appId": ${{ values.name | dump }}
+    humanitec.com/orgId: ${{ values.orgId | dump }}
+    humanitec.com/appId: ${{ values.name | dump }}
+    backstage.io/kubernetes-id: ${{values.name}}
+    backstage.io/source-location: url:https://${{values.host}}/${{values.destination}}
+    quay.io/repository-slug: ${{values.quay_destination | dump}}
+  tags:
+    - node
+    - humanitec
 spec:
   type: service
-  owner: user:guest
+  owner: ${{values.owner | dump}}
   lifecycle: experimental
+  providesApis:
+    - ${{values.name | dump}}
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: ${{values.name | dump}}
+spec:
+  type: openapi
+  lifecycle: experimental
+  owner: ${{values.owner | dump}}
+  definition:
+    $text: ./openapi.yaml
