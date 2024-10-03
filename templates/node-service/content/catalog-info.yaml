@@ -5,7 +5,9 @@ metadata:
   annotations:
     humanitec.com/orgId: ${{ values.orgId | dump }}
     humanitec.com/appId: ${{ values.name | dump }}
-    quay.io/repository-slug: ${{values.quay_destination | dump}}
+    quay.io/repository-slug: ${{ values.quay_destination | dump }}
+    backstage.io/source-location: url:https://${{ values.githost | dump }}/${{ steps.environment.output.githubOrgId }}/${{ parameters.componentName }}
+    github.com/project-slug: ${{ steps.environment.output.githubOrgId }}/${{ parameters.componentName }}
   tags:
     - node
     - humanitec

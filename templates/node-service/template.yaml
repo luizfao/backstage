@@ -41,7 +41,7 @@ spec:
           orgId: ${{ steps.environment.output.orgId }}
           cloudProvider: ${{ steps.environment.output.cloudProvider }}
           owner: ${{ user.entity.metadata.name }}
-          host: github.com
+          githost: github.com
           destination: ${{ steps.environment.output.githubOrgId }}/${{ parameters.componentName }}
           quay_destination: quayadmin/${{ parameters.componentName }}
 
