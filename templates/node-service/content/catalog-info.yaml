@@ -5,8 +5,6 @@ metadata:
   annotations:
     humanitec.com/orgId: ${{ values.orgId | dump }}
     humanitec.com/appId: ${{ values.name | dump }}
-    backstage.io/kubernetes-id: ${{values.name}}
-    backstage.io/source-location: url:https://${{values.host}}/${{values.destination}}
     quay.io/repository-slug: ${{values.quay_destination | dump}}
   tags:
     - node
