@@ -37,7 +37,7 @@ env:
 {% endif %}
   HUMCTL_VERSION: '*'
   APP_NAME: ${{ values.name }}
-  APP_ENV: ocp-luiz
+  APP_ENV: luiz-ocp-k8s
 
 {% raw %}
 jobs:

@@ -33,7 +33,7 @@ env:
 {% endraw %}
   # Not on a cloud or unknown cloud provider ${{ values.cloudProvider }}
 {% endif %}
-  BASE_ENVIRONMENT: 'development'
+  BASE_ENVIRONMENT: 'luiz-ocp-k8s'
   ENVIRONMENT_TYPE: 'development'
   HUMCTL_VERSION: '*'
   ENVIRONMENT_ID: {% raw %}pr-${{ github.event.number }}{% endraw %}
