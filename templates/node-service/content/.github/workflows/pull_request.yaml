@@ -34,7 +34,7 @@ env:
   # Not on a cloud or unknown cloud provider ${{ values.cloudProvider }}
 {% endif %}
   BASE_ENVIRONMENT: 'luiz-ocp-k8s'
-  ENVIRONMENT_TYPE: 'development'
+  ENVIRONMENT_TYPE: 'pullreq'
   HUMCTL_VERSION: '*'
   ENVIRONMENT_ID: {% raw %}pr-${{ github.event.number }}{% endraw %}
   ENVIRONMENT_NAME: {% raw %}PR-${{ github.event.number }}{% endraw %}
